@@ -22,7 +22,7 @@ services:
   ipfs:
     image: ipfs/kubo:v0.17.0
     ports:
-      - '9101:5001'
+      - '9201:5001'
     volumes:
       - ./data/ipfs:/data/ipfs
   postgres:
