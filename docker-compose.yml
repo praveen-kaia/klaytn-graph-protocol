@@ -3,11 +3,11 @@ services:
   graph-node:
     image: graphprotocol/graph-node
     ports:
-      - '9000:8000'
-      - '9001:8001'
-      - '9020:8020'
-      - '9030:8030'
-      - '9040:8040'
+      - '9100:8000'
+      - '9101:8001'
+      - '9120:8020'
+      - '9130:8030'
+      - '9140:8040'
     depends_on:
       - ipfs
       - postgres
@@ -22,13 +22,13 @@ services:
   ipfs:
     image: ipfs/kubo:v0.17.0
     ports:
-      - '9001:5001'
+      - '9101:5001'
     volumes:
       - ./data/ipfs:/data/ipfs
   postgres:
     image: postgres:14
     ports:
-      - '9432:5432'
+      - '9132:5432'
     command:
       [
         "postgres",
