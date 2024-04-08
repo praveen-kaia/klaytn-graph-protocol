@@ -1,22 +1,33 @@
 version: '3'
 services:
   # Common nginx and database
-  nginx-baobab:
+  nginx:
     image: nginx:alpine
     ports:
-      - "6100:8000"
+      - "5100:8000"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - nginx-baobab
+      - nginx-cypress
+
+  # Common nginx and database
+  nginx-baobab:
+    image: nginx:alpine
+    # ports:
+    #   - "6100:8000"
     volumes:
       - ./nginx-baobab.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - graph-node-baobab
   graph-node-baobab:
     image: graphprotocol/graph-node
-    ports:
-      - '6000:8000'
-      - '6001:8001'
-      - '6020:8020'
-      - '6030:8030'
-      - '6040:8040'
+    # ports:
+    #   - '6000:8000'
+    #   - '6001:8001'
+    #   - '6020:8020'
+    #   - '6030:8030'
+    #   - '6040:8040'
     depends_on:
       - ipfs
       - postgres-baobab
@@ -30,8 +41,8 @@ services:
       GRAPH_LOG: info
   ipfs:
     image: ipfs/kubo:v0.17.0
-    ports:
-      - '5001:5001'
+    # ports:
+    #   - '5001:5001'
     volumes:
       - ./data/ipfs:/data/ipfs
   postgres-baobab:
@@ -58,20 +69,20 @@ services:
   # Common nginx and database
   nginx-cypress:
     image: nginx:alpine
-    ports:
-      - "7100:8000"
+    # ports:
+    #   - "7100:8000"
     volumes:
       - ./nginx-cypress.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - graph-node-cypress
   graph-node-cypress:
     image: graphprotocol/graph-node
-    ports:
-      - '7000:8000'
-      - '7001:8001'
-      - '7020:8020'
-      - '7030:8030'
-      - '7040:8040'
+    # ports:
+    #   - '7000:8000'
+    #   - '7001:8001'
+    #   - '7020:8020'
+    #   - '7030:8030'
+    #   - '7040:8040'
     depends_on:
       - ipfs
       - postgres-cypress
