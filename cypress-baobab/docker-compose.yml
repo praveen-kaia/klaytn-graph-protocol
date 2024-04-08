@@ -21,7 +21,7 @@ services:
       - ipfs
       - postgres-baobab
     environment:
-      postgres_host: postgres
+      postgres_host: postgres-baobab
       postgres_user: graph-node
       postgres_pass: let-me-in
       postgres_db: graph-node
@@ -76,7 +76,7 @@ services:
       - ipfs
       - postgres-cypress
     environment:
-      postgres_host: postgres
+      postgres_host: postgres-cypress
       postgres_user: graph-node
       postgres_pass: let-me-in
       postgres_db: graph-node
