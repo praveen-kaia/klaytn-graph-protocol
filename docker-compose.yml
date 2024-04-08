@@ -1,5 +1,14 @@
 version: '3'
 services:
+  # Common nginx and database
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "6000:8000"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - graph-node
   graph-node:
     image: graphprotocol/graph-node
     ports:
@@ -17,7 +26,7 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: 'ipfs:5001'
-      ethereum: 'mainnet:https://archive-en.cypress.klaytn.net'
+      ethereum: 'mainnet:https://public-en-baobab.klaytn.net'
       GRAPH_LOG: info
   ipfs:
     image: ipfs/kubo:v0.17.0
