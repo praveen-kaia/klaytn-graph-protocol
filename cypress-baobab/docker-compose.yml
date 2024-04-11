@@ -40,9 +40,10 @@ services:
       ethereum: 'mainnet:https://public-en-baobab.klaytn.net'
       GRAPH_LOG: info
   ipfs:
-    image: ipfs/kubo:v0.17.0
-    # ports:
-    #   - '5001:5001'
+    image: ipfs/kubo:v0.27.0
+    ports:
+      - '5001:5001'
+      - '5080:8080'
     volumes:
       - ./data/ipfs:/data/ipfs
   postgres-baobab:
