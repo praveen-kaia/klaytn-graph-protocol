@@ -37,7 +37,7 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: 'ipfs:5001'
-      ethereum: 'mainnet:https://public-en-baobab.klaytn.net'
+      ethereum: 'baobab:https://public-en-baobab.klaytn.net'
       GRAPH_LOG: info
   ipfs:
     image: ipfs/kubo:v0.27.0
@@ -93,7 +93,7 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: 'ipfs:5001'
-      ethereum: 'mainnet:https://kaikas-fe.cypress.klaytn.net'
+      ethereum: 'cypress:https://kaikas-fe.cypress.klaytn.net'
       GRAPH_LOG: info
   postgres-cypress:
     image: postgres:14
